@@ -250,64 +250,128 @@
             background: #f1f5f9;
         }
 
-        /* Animations */
-        @keyframes pulseGlow {
-            from {
-                opacity: 0.5;
-                transform: scale(1);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1.05);
-            }
+        /* App Gallery Section */
+        .app-gallery {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #334155, #1e293b);
+            position: relative;
+            border-top: 2px solid #a855f7;
+            border-bottom: 2px solid #a855f7;
         }
 
-        @keyframes neonFlicker {
-            0%, 100% {
-                text-shadow: 
-                    0 0 5px #ec4899,
-                    0 0 10px #ec4899,
-                    0 0 15px #a855f7,
-                    0 0 20px #a855f7;
-            }
-            50% {
-                text-shadow: 
-                    0 0 2px #ec4899,
-                    0 0 5px #ec4899,
-                    0 0 8px #a855f7,
-                    0 0 12px #a855f7,
-                    0 0 25px #06b6d4;
-            }
+        .app-gallery::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+            z-index: 0;
         }
 
-        @keyframes buttonPulse {
-            0%, 100% {
-                box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
-            }
-            50% {
-                box-shadow: 0 4px 25px rgba(236, 72, 153, 0.8);
-            }
+        .app-gallery h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 80px;
+            color: #ec4899;
+            text-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
+            position: relative;
+            z-index: 1;
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
         }
 
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s, box-shadow 0.4s;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(51, 65, 85, 0.9));
+            border: 2px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(236, 72, 153, 0.6);
+            border-color: #ec4899;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 30px 20px 20px;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #ec4899;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #e2e8f0;
+        }
+
+        .gallery-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 250px;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1));
+            border: 2px dashed rgba(168, 85, 247, 0.5);
+            border-radius: 20px;
+            color: #a855f7;
+            text-align: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .gallery-placeholder:hover {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+            border-color: #ec4899;
+            transform: translateY(-5px);
+        }
+
+        .gallery-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            opacity: 0.7;
         }
 
         /* How It Works Section */
@@ -408,7 +472,7 @@
             .hero p {
                 font-size: 1.2rem;
             }
-            .features h2, .how-it-works h2, .cta h2 {
+            .features h2, .how-it-works h2, .cta h2, .app-gallery h2 {
                 font-size: 2rem;
             }
             .feature-grid, .steps-grid {
@@ -417,6 +481,10 @@
             }
             .feature-card, .step-card {
                 padding: 30px;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
         }
 
@@ -490,6 +558,60 @@
                     <div class="step-number">4</div>
                     <h3>Go on the Date!</h3>
                     <p>Once matched, chat, plan, and actually go on the date—turning your posted idea into a real, memorable adventure together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Gallery Section -->
+    <section class="app-gallery">
+        <div class="container">
+            <h2>App Gallery</h2>
+            <div class="gallery-grid">
+                <!-- Gallery items with your actual images -->
+                <div class="gallery-item">
+                    <img src="images/Screenshot_20251024-032216.png" alt="Create-A-Date App Interface">
+                    <div class="gallery-overlay">
+                        <h3>Main Interface</h3>
+                        <p>Beautiful and intuitive user interface designed for seamless dating experience</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Screenshot_20251024-032229.png" alt="Date Marketplace">
+                    <div class="gallery-overlay">
+                        <h3>Date Marketplace</h3>
+                        <p>Browse and post exciting date ideas in our revolutionary marketplace</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Screenshot_20251024-032251.png" alt="AI Matching System">
+                    <div class="gallery-overlay">
+                        <h3>AI-Powered Matching</h3>
+                        <p>Advanced AI algorithms find your perfect match based on preferences and interests</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Screenshot_20251024-032431.png" alt="Chat Features">
+                    <div class="gallery-overlay">
+                        <h3>Smart Chat</h3>
+                        <p>Engage in meaningful conversations with AI-powered conversation starters</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <div>
+                            <i>📱</i>
+                            <br>Drop more screenshots here!
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <div>
+                            <i>🎨</i>
+                            <br>Add design mockups
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
