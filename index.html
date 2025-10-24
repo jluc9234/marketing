@@ -281,42 +281,49 @@
         }
 
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 20px 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .gallery-grid::-webkit-scrollbar {
+            display: none;
         }
 
         .gallery-item {
+            flex: 0 0 auto;
+            width: 280px;
             position: relative;
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            transition: transform 0.4s, box-shadow 0.4s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
             background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(51, 65, 85, 0.9));
             border: 2px solid rgba(168, 85, 247, 0.3);
+            scroll-snap-align: center;
         }
 
         .gallery-item:hover {
-            transform: translateY(-15px) scale(1.05);
-            box-shadow: 0 25px 50px rgba(236, 72, 153, 0.6);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(236, 72, 153, 0.4);
             border-color: #ec4899;
         }
 
         .gallery-item img {
             width: 100%;
-            height: 250px;
-            object-fit: cover;
+            height: 400px;
+            object-fit: contain;
             display: block;
-            transition: transform 0.4s;
+            background: white;
+            transition: transform 0.3s;
         }
 
         .gallery-item:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .gallery-overlay {
@@ -325,25 +332,22 @@
             left: 0;
             right: 0;
             background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            padding: 30px 20px 20px;
+            padding: 40px 15px 15px;
             color: white;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .gallery-item:hover .gallery-overlay {
             opacity: 1;
+            transition: opacity 0.3s;
         }
 
         .gallery-overlay h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
             color: #ec4899;
+            text-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
         }
 
         .gallery-overlay p {
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.85rem;
+            line-height: 1.4;
             color: #e2e8f0;
         }
 
@@ -485,6 +489,14 @@
             .gallery-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
+                overflow-x: visible;
+            }
+            .gallery-item {
+                width: 100%;
+                scroll-snap-align: none;
+            }
+            .gallery-item img {
+                height: 300px;
             }
         }
 
@@ -534,6 +546,79 @@
         </div>
     </section>
 
+    <!-- App Gallery Section -->
+    <section class="app-gallery">
+        <div class="container">
+            <h2>App Gallery</h2>
+            <div class="gallery-grid">
+                <!-- Gallery items with all your actual images -->
+                <div class="gallery-item">
+                    <img src="images/Screenshot_20251024-031847.png" alt="Create-A-Date App Screenshot">
+                    <div class="gallery-overlay">
+                        <h3>Welcome Screen</h3>
+                        <p>Beautiful welcome interface for new users</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Screenshot_20251024-032137.png" alt="App Navigation">
+                    <div class="gallery-overlay">
+                        <h3>Navigation</h3>
+                        <p>Easy-to-use navigation system</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Screenshot_20251024-032147.png" alt="Profile Setup">
+                    <div class="gallery-overlay">
+                        <h3>Profile Setup</h3>
+                        <p>Simple and intuitive profile creation</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Screenshot_20251024-032154.png" alt="Date Ideas">
+                    <div class="gallery-overlay">
+                        <h3>Date Ideas</h3>
+                        <p>Browse creative date suggestions</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Screenshot_20251024-032159.png" alt="Matching System">
+                    <div class="gallery-overlay">
+                        <h3>Smart Matching</h3>
+                        <p>AI-powered compatibility matching</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Screenshot_20251024-032216.png" alt="Main Interface">
+                    <div class="gallery-overlay">
+                        <h3>Main Interface</h3>
+                        <p>Clean and modern user interface design</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Screenshot_20251024-032229.png" alt="Date Marketplace">
+                    <div class="gallery-overlay">
+                        <h3>Marketplace</h3>
+                        <p>Revolutionary date marketplace browsing</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Screenshot_20251024-032251.png" alt="AI Matching">
+                    <div class="gallery-overlay">
+                        <h3>AI Matching</h3>
+                        <p>Advanced algorithms find perfect matches</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Screenshot_20251024-032431.png" alt="Chat System">
+                    <div class="gallery-overlay">
+                        <h3>Smart Chat</h3>
+                        <p>AI-assisted conversation features</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- How It Works Section -->
     <section class="how-it-works">
         <div class="container">
@@ -558,60 +643,6 @@
                     <div class="step-number">4</div>
                     <h3>Go on the Date!</h3>
                     <p>Once matched, chat, plan, and actually go on the date—turning your posted idea into a real, memorable adventure together.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- App Gallery Section -->
-    <section class="app-gallery">
-        <div class="container">
-            <h2>App Gallery</h2>
-            <div class="gallery-grid">
-                <!-- Gallery items with your actual images -->
-                <div class="gallery-item">
-                    <img src="images/Screenshot_20251024-032216.png" alt="Create-A-Date App Interface">
-                    <div class="gallery-overlay">
-                        <h3>Main Interface</h3>
-                        <p>Beautiful and intuitive user interface designed for seamless dating experience</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/Screenshot_20251024-032229.png" alt="Date Marketplace">
-                    <div class="gallery-overlay">
-                        <h3>Date Marketplace</h3>
-                        <p>Browse and post exciting date ideas in our revolutionary marketplace</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/Screenshot_20251024-032251.png" alt="AI Matching System">
-                    <div class="gallery-overlay">
-                        <h3>AI-Powered Matching</h3>
-                        <p>Advanced AI algorithms find your perfect match based on preferences and interests</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/Screenshot_20251024-032431.png" alt="Chat Features">
-                    <div class="gallery-overlay">
-                        <h3>Smart Chat</h3>
-                        <p>Engage in meaningful conversations with AI-powered conversation starters</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <div>
-                            <i>📱</i>
-                            <br>Drop more screenshots here!
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <div>
-                            <i>🎨</i>
-                            <br>Add design mockups
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
